@@ -1,0 +1,24 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: drkiq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: drkiq
+  template:
+    metadata:
+      labels:
+        app: drkiq
+    spec:
+      containers:
+      - name: drkiq
+        image: mohamedelbahr/drkiq-app:latest
+        ports:
+        - name: http
+          containerPort: 8010
+          protocol: TCP
+        envFrom:
+        - configMapRef:
+            name: app-configuration

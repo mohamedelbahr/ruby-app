@@ -1,0 +1,21 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: sidekiq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sidekiq
+  template:
+    metadata:
+      labels:
+        app: sidekiq
+    spec:
+      containers:
+      - name: sidekiq
+        image: mohamedelbahr/drkiq-app:latest
+        command: ["bundle", "exec", "sidekiq"]
+        envFrom:
+        - configMapRef:
+            name: app-configuration        
