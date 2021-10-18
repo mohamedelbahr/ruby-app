@@ -31,3 +31,4 @@ You need to install below binaries to be able to comlete the task
 5. Run `kubectl get pods,deploy` to verify all deployments are running
 6. Run `minikube service nginx` to open a web browser page for the nginx proxy and navigate the app
 7. Run `make clean-all` to clean up all created resources
+8. In case we need to release & deploy a new code change, we can simply run `make release-app`
