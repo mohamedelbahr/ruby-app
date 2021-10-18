@@ -18,6 +18,7 @@ release-app:
 	docker push mohamedelbahr/drkiq-app:latest
 	kubectl apply -f k8s/drkiq-app
 
+# To clean up all deployed resources
 clean-all:
 	kubectl delete -f k8s/drkiq-web
 	kubectl delete -f k8s/drkiq-app
