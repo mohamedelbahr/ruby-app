@@ -6,15 +6,17 @@ You need to install below binaries to be able to comlete the task
 3. Testing Minikube cluster > helping [document](https://v1-18.docs.kubernetes.io/docs/tasks/tools/install-minikube/)
 
 ## Notes before deploying the app
-1. The built app images were pushed to the personal public dockerhub registry
+1. All services's k8s yaml definitions commited under k8s directory
+
+2. The built app images were pushed to the personal public dockerhub registry
    
-    1.1) mohamedelbahr/drkiq-app:latest       >> Using `Dockerfile.production`
+    2.1) mohamedelbahr/drkiq-app:latest       >> Using `Dockerfile.production`
 
-    1.2) mohamedelbahr/drkiq-nginx:latest     >> Using `Dockerfile.nginx`
+    2.2) mohamedelbahr/drkiq-nginx:latest     >> Using `Dockerfile.nginx`
 
-2. Database password in real production environment should be stored in a safe location and deployed as k8s secret 
+3. Database password in real production environment should be stored in a safe location and deployed as k8s secret 
 
-3. I have made a simple Makefile to simplify / organize the deployment commands
+4. I have made a simple Makefile to simplify / organize the deployment commands
 ## Steps
 1. Clone the repo by running `git clone https://github.com/mohamedelbahr/ruby-app.git`
 2. Go to `ruby-app` directory
