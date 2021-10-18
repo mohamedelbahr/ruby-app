@@ -1,46 +1,31 @@
-# Dockerizing Ruby Tutorial
+# Deploy Ruby app to k8s cluster running on Minikube
 
-[![Build Status](https://tomfern.semaphoreci.com/badges/dockerizing-ruby/branches/master.svg?key=a7410866-1910-44a0-8ef2-624794abd900)](https://tomfern.semaphoreci.com/projects/dockerizing-ruby)
+## Prerequisites
+You need to install below binaries to be able to comlete the task
+1. kubectl > helping [document](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+3. Testing Minikube cluster > helping [document](https://v1-18.docs.kubernetes.io/docs/tasks/tools/install-minikube/)
 
-## Local setup
+## Notes before deploying the app
+1. The built app images were pushed to the personal public dockerhub registry
+   
+    1.1) mohamedelbahr/drkiq-app:latest
 
-Prepare environment, for dev version you can use the example environment:
+    1.2) mohamedelbahr/drkiq-nginx:latest
+2. Database password in real production environment should be stored in a safe location and deployed as k8s secret 
 
-```bash
-$ cp env-example .env
-```
+## Steps
+1. Clone the repo 'git clone https://github.com/mohamedelbahr/ruby-app.git'
+2. Go to `ruby-app` directory
+3. Before deploying the application, make sure that `kubectl` is configured to point to the installed minikube cluster by rinnung `kubectl config view`
+4. Run `make deploy-all` to deploy all application stack including 
+    
+    A- drkiq-app
 
-Start the server:
+    B- drkiq-web
 
-```bash
-$ docker-compose up --build
-```
+    C- Postgres
 
-Browse http://localhost:8020
-
-## License
-
-MIT License
-
-Copyright (c) 2020 Rendered Text
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-
-
+    D- Redis
+5. Run `kubectl get pods,deploy` to verify all deployments are running
+6. Run `minikube service nginx` to open a web browser page for the nginx proxy and navigate the app
+7. Run `make clean-all` to clean up all created resources
