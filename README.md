@@ -11,8 +11,10 @@ You need to install below binaries to be able to comlete the task
     1.1) mohamedelbahr/drkiq-app:latest       >> Using `Dockerfile.production`
 
     1.2) mohamedelbahr/drkiq-nginx:latest     >> Using `Dockerfile.nginx`
+
 2. Database password in real production environment should be stored in a safe location and deployed as k8s secret 
 
+3. I have made a simple Makefile to simplify / organize the deployment commands
 ## Steps
 1. Clone the repo by running `git clone https://github.com/mohamedelbahr/ruby-app.git`
 2. Go to `ruby-app` directory
