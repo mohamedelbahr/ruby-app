@@ -8,9 +8,9 @@ You need to install below binaries to be able to comlete the task
 ## Notes before deploying the app
 1. The built app images were pushed to the personal public dockerhub registry
    
-    1.1) mohamedelbahr/drkiq-app:latest
+    1.1) mohamedelbahr/drkiq-app:latest       >> Using `Dockerfile.production`
 
-    1.2) mohamedelbahr/drkiq-nginx:latest
+    1.2) mohamedelbahr/drkiq-nginx:latest     >> Using `Dockerfile.nginx
 2. Database password in real production environment should be stored in a safe location and deployed as k8s secret 
 
 ## Steps
