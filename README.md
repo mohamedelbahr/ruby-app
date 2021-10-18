@@ -14,7 +14,7 @@ You need to install below binaries to be able to comlete the task
 2. Database password in real production environment should be stored in a safe location and deployed as k8s secret 
 
 ## Steps
-1. Clone the repo 'git clone https://github.com/mohamedelbahr/ruby-app.git'
+1. Clone the repo by running `git clone https://github.com/mohamedelbahr/ruby-app.git`
 2. Go to `ruby-app` directory
 3. Before deploying the application, make sure that `kubectl` is configured to point to the installed minikube cluster by rinnung `kubectl config view`
 4. Run `make deploy-all` to deploy all application stack including 
